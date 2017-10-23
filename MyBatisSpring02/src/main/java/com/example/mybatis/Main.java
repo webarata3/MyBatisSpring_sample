@@ -1,7 +1,5 @@
 package com.example.mybatis;
 
-import com.example.mybatis.mapper.BookMapper;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
