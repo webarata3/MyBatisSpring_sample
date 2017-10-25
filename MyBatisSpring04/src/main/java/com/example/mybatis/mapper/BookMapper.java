@@ -4,5 +4,5 @@ import com.example.mybatis.Book;
 import org.apache.ibatis.annotations.Param;
 
 public interface BookMapper {
-    public Book select(@Param("bookId") Integer bookId);
+    public Book select(Integer bookId);
 }
