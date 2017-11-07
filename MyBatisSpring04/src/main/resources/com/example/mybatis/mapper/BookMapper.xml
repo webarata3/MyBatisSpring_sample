@@ -12,8 +12,9 @@
   WHERE book_name = #{bookName} AND price <= #{price}
   ]]>
  </select>
- <insert id="insert">
-  INSERT INTO BOOK(book_id, book_name, author, price)
-  VALUES(#{bookId}, #{bookName}, #{author}, #{price})
- </insert>
+ <update id="update">
+  UPDATE book
+  SET price = #{price}
+  WHERE book_id = #{bookId}
+ </update>
 </mapper>

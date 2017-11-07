@@ -1,5 +1,6 @@
 package com.example.mybatis;
 
+import com.example.mybatis.mapper.BookMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -16,8 +17,10 @@ public class Main {
         }
 
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            Book book = new Book(333, "よくわかるMyBatis", "加藤二郎", 4980);
-            int count = session.insert("com.example.mybatis.mapper.BookMapper.insert", book);
+            Book book = new Book();
+            book.setBookId(101);
+            book.setPrice(5980);
+            int count = session.update("com.example.mybatis.mapper.BookMapper.update", book);
             System.out.println("更新件数は" + count + "件");
             List<Book> bookList = session.selectList("com.example.mybatis.mapper.BookMapper.selectAll");
             bookList.forEach(System.out::println);
