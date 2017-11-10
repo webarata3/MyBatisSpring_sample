@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyBatisSpring06.iml" filepath="$PROJECT_DIR$/.idea/modules/MyBatisSpring06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyBatisSpring06_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MyBatisSpring06_main.iml" group="MyBatisSpring06" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyBatisSpring06_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MyBatisSpring06_test.iml" group="MyBatisSpring06" />
     </modules>
   </component>
 </project>
