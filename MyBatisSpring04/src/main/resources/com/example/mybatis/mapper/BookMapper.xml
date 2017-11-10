@@ -12,9 +12,4 @@
   WHERE book_name = #{bookName} AND price <= #{price}
   ]]>
  </select>
- <update id="update">
-  UPDATE book
-  SET price = #{price}
-  WHERE book_id = #{bookId}
- </update>
 </mapper>

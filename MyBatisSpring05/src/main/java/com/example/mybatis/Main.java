@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -17,12 +20,11 @@ public class Main {
 
         try (SqlSession session = sqlSessionFactory.openSession()) {
             Book book = new Book();
-            book.setBookId(101);
-            int count = session.delete("com.example.mybatis.mapper.BookMapper.delete", book);
-            System.out.println("更新件数は" + count + "件");
-            List<Book> bookList = session.selectList("com.example.mybatis.mapper.BookMapper.selectAll");
+//            List<String> authorList = Collections.emptyList();
+            List<String> authorList = Arrays.asList("山田太郎");
+            book.setAuthorList(authorList);
+            List<Book> bookList = session.selectList("com.example.mybatis.mapper.BookMapper.selectAuthor", book);
             bookList.forEach(System.out::println);
-            session.commit();
         }
     }
 }
