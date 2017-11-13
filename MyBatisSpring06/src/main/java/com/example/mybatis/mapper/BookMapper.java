@@ -8,6 +8,6 @@ import java.util.List;
 public interface BookMapper {
     public List<Book> selectAll();
 
-    @Insert("INSERT INTO book VALUES(#{bookId}, #{bookName}, #{author}, #{price}")
+    @Insert("INSERT INTO book(book_id, book_name, author, price) VALUES(#{bookId}, #{bookName}, #{author}, #{price})")
     public int insert(Book book);
 }
