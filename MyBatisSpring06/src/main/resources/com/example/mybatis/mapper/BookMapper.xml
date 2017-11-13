@@ -3,9 +3,6 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mybatis.mapper.BookMapper">
- <select id="selectAll" resultType="com.example.mybatis.Book">
-  SELECT book_id, book_name, author, price FROM book
- </select>
  <insert id="insert">
   INSERT INTO book(book_id, book_name, author, price)
   VALUES(#{bookId}, #{bookName}, #{bookName}, #{price})
