@@ -3,16 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
  <context:component-scan base-package="com.example.mybatis.service" />
 
  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -22,27 +16,13 @@ http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-sprin
   <property name="password" value="" />
  </bean>
 
- <bean id="transactionManager"
-       class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-  <property name="dataSource" ref="dataSource" />
- </bean>
-
- <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
-  <tx:attributes>
-   <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED"
-              timeout="10" read-only="false" />
-  </tx:attributes>
- </tx:advice>
-
- <aop:config>
-  <aop:advisor advice-ref="transactionAdvice"
-               pointcut="execution(* com.example.mybatis.service.*Service.*(..))" />
- </aop:config>
-
  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
   <property name="dataSource" ref="dataSource" />
   <property name="configLocation" value="classpath:/META-INF/mybatis-config.xml" />
+  <property name="mapperLocations" value="classpath:/com/example/mybatis/mapper/**/*.xml" />
  </bean>
 
- <mybatis:scan base-package="com.example.mybatis.mapper" />
+ <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+  <constructor-arg index="0" ref="sqlSessionFactory" />
+ </bean>
 </beans>

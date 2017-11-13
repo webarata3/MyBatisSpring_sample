@@ -6,4 +6,8 @@
  <select id="selectAll" resultType="com.example.mybatis.Book">
   SELECT book_id, book_name, author, price FROM book
  </select>
+ <insert id="insert">
+  INSERT INTO book(book_id, book_name, author, price)
+  VALUES(#{bookId}, #{bookName}, #{bookName}, #{price})
+ </insert>
 </mapper>
